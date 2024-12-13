@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Telecentro - Consulta de Clientes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <img src="img/logo.png" alt="Logo">
+    </div>
+
+    <div class="navbar">
+        <a href="#">Call Center</a>
+        <a href="#">Clientes</a>
+        <a href="#">Corporativos</a>
+        <a href="#">Cta.Cte.</a>
+        <a href="#">IVR</a>
+        <a href="#">Interfaces</a>
+        <a href="#">Mis Datos</a>
+        <a href="#">Parámetros</a>
+        <a href="#">Productos</a>
+        <a href="#">Rec. Administrativos</a>
+        <a href="#">Rec. Externos</a>
+        <a href="#">Redes</a>
+        <a href="#">Telefonía</a>
+        <a href="#">Transferencias</a>
+        <a href="#">Ventas</a>
+        <a href="#">Visitas</a>
+    </div>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Nro. de Cliente">
+            <button onclick="buscarCliente()">Buscar (F8)</button>
+        </div>
+
+        <!-- Mensaje de Advertencia -->
+        <div id="mensajeAdvertencia" class="advertencia" style="display: none;">
+            <p>IMPORTANTE: el nuevo decodificador 4K - Android TV no es posible brindarlo como recambio o venta de boca nueva. Solo el área de Retención puede ofrecer la oferta.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card" id="clienteInfo">
+                <h3>Datos del Cliente</h3>
+                <p><strong>DNI:</strong> <span id="dni"></span></p>
+                <p><strong>Domicilio:</strong> <span id="domicilio"></span></p>
+                <p><strong>Entre Calles:</strong> <span id="entreCalles"></span></p>
+                <p><strong>Localidad:</strong> <span id="localidad"></span></p>
+                <p><strong>Edificio:</strong> <span id="edificio"></span></p>
+            </div>
+
+            <div class="card" id="contactoInfo">
+                <h3>Formas de Contacto</h3>
+                <p><strong>Teléfono:</strong> <span id="telefono"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Suc. Virtual:</strong> <span id="sucVirtual"></span></p>
+                <p><strong>Notificaciones Enviadas:</strong> <span id="notificaciones"></span></p>
+                <p><strong>Cuenta de RRSS:</strong> <span id="cuentaRRSS"></span></p>
+            </div>
+
+            <div class="card" id="zonaInfo">
+                <h3>Zona</h3>
+                <p><strong>Zona FTTH:</strong> <span id="zonaFTTH"></span></p>
+                <p><strong>Zona Técnica:</strong> <span id="zonaTecnica"></span></p>
+                <p><strong>Comercial:</strong> <span id="comercial"></span></p>
+                <p><strong>Ubicación:</strong> <span id="ubicacion"></span></p>
+            </div>
+
+            <div class="card" id="estadoCliente">
+                <h3>Estado del Cliente</h3>
+                <p><strong>Estado:</strong> <span id="estado"></span></p>
+                <p><strong>Categoría:</strong> <span id="categoria"></span></p>
+                <p><strong>Tipo Factura:</strong> <span id="tipoFactura"></span></p>
+                <p><strong>Forma de Pago:</strong> <span id="formaPago"></span></p>
+                <p><strong>Clave de Pago:</strong> <span id="clavePago"></span></p>
+                <p><strong>Condición IIBB:</strong> <span id="condicionIIBB"></span></p>
+                <p><strong>Condición de IVA:</strong> <span id="condicionIVA"></span></p>
+            </div>
+
+            <div class="card" id="situacionCliente">
+                <h3>Situación del Cliente</h3>
+                <p><strong>Rec. Adm:</strong> <span id="recAdm"></span></p>
+                <p><strong>Visitas Técnicas:</strong> <span id="visitasTecnicas"></span></p>
+                <p><strong>Instalaciones:</strong> <span id="instalaciones"></span></p>
+                <p><strong>Bajas:</strong> <span id="bajas"></span></p>
+                <p><strong>Deuda:</strong> <span id="deuda"></span></p>
+                <p><strong>Bloqueos:</strong> <span id="bloqueos"></span></p>
+                <p><strong>Propensión Baja:</strong> <span id="propensionBaja"></span></p>
+                <p><strong>Reclamo Formal:</strong> <span id="reclamoFormal"></span></p>
+            </div>
+
+            <div class="card" id="productosInsumos">
+                <h3>Productos e Insumos</h3>
+                <p><strong>Internet:</strong> <span id="internet"></span></p>
+                <p><strong>Telecentro Wifi:</strong> <span id="telecentroWifi"></span></p>
+                <p><strong>Crédito:</strong> <span id="credito"></span></p>
+                <p><strong>Administrar Dispositivos:</strong> <i class="fas fa-cog"></i></p>
+                <p><strong>Dispositivos Asociados:</strong> <i class="fas fa-wifi"></i></p>
+            </div>
+        </div>
+    </div>
+
+  <!-- Sección con Cuenta Corriente e Historial uno al lado del otro -->
+  <div class="grid">
+    <!-- Cuenta Corriente -->
+    <div class="card" id="cuentaCorriente">
+        <h3>Cuenta Corriente</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha Comp.</th>
+                    <th>Fecha Vta.</th>
+                    <th>Descripción</th>
+                    <th>Número</th>
+                    <th>Debe</th>
+                    <th>Haber</th>
+                    <th>Saldo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaCuentaCorriente">
+                <!-- Datos a llenar dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Historial -->
+    <div class="card" id="historialCliente">
+        <h3>Historial</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Nro.</th>
+                    <th>Historia</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaHistorial">
+                <!-- Datos a llenar dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Carga de Reclamos al final -->
+<div class="card" id="cargaReclamos">
+    <h3>Cargar Sugerencia / Reclamo</h3>
+    <select id="selectReclamo">
+        <option value="">- Seleccionar -</option>
+        <option value="reclamo1">Reclamo 1</option>
+        <option value="reclamo2">Reclamo 2</option>
+        <!-- Agrega más opciones según sea necesario -->
+    </select>
+    <button onclick="cargarReclamo()">Cargar</button>
+</div>
+</div>
+    <div class="footer">Telecentro S.A. - 2024</div>
+    <script src="js/script.js"></script>
+</body>
+</html>

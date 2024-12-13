@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+.header img {
+    height: 40px;
+}
+.navbar {
+    background-color: #002244;
+    color: #fff;
+    display: flex;
+    padding: 10px;
+    font-size: 14px;
+}
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+.navbar a:hover {
+    background-color: #004488;
+    border-radius: 5px;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+.search-bar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.search-bar input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    font-size: 16px;
+    text-align: left;
+}
+.search-bar button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.card h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.card p {
+    margin: 5px 0;
+    color: #555;
+}
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #003366;
+    color: #fff;
+}
+
+.advertencia {
+    background-color: #ffdddd;
+    color: #d9534f;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #d9534f;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.check-icon {
+    color: #28a745; /* Verde */
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+/* Asegurar que las tablas sean consistentes en su ancho y estén centradas */
+#cuentaCorriente table, #historialCliente table {
+width: 100%;
+margin: 0 auto;
+border-collapse: collapse;
+}
+
+/* Estilos para las celdas de las tablas */
+#cuentaCorriente table th, #cuentaCorriente table td,
+#historialCliente table th, #historialCliente table td {
+padding: 10px;
+border: 1px solid #ddd;
+}
+
+/* Títulos de las secciones centrados */
+#cuentaCorriente h3, #historialCliente h3 {
+text-align: center;
+}
+
+/* Asegurar consistencia en la visualización */
+.card {
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+padding: 20px;
+margin-bottom: 20px;
+}
