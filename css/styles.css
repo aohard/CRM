@@ -30,19 +30,20 @@ body {
     border-radius: 5px;
 }
 .container {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     text-align: center;
 }
 .search-bar {
     margin: 20px 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Alinear a la izquierda */
     gap: 10px;
+    width: 100%; /* Ajustar la longitud horizontal al 100% */
 }
 .search-bar input[type="text"] {
     padding: 10px;
-    width: 60%;
+    width: 10%; /* Ajustar el ancho del input al 25% del contenedor */
     font-size: 16px;
     text-align: left;
 }
@@ -59,6 +60,19 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+.grid.centered {
+    display: grid;
+    grid-template-columns: auto; /* Hacer que el grid abarque todo el contenedor de manera dinámica */
+    gap: 20px;
+}
+
+.grid.full-width {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Hacer que ambos elementos abarquen todo el contenedor en la misma fila */
+    gap: 20px;
+}
+
 .card {
     background-color: #fff;
     padding: 15px;
@@ -69,12 +83,14 @@ body {
 .card h3 {
     margin: 0;
     font-size: 18px;
-    color: #333;
+    color: #0066cc; /* Cambiar el color del título a un celeste apenas más claro */
     margin-bottom: 10px;
+    text-align: left; /* Alinear el título a la izquierda */
 }
 .card p {
     margin: 5px 0;
     color: #555;
+    text-align: left; /* Alinear el texto a la izquierda */
 }
 .footer {
     text-align: center;
@@ -83,16 +99,7 @@ body {
     color: #fff;
 }
 
-.advertencia {
-    background-color: #ffdddd;
-    color: #d9534f;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #d9534f;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-}
+
 
 .check-icon {
     color: #28a745; /* Verde */
@@ -116,7 +123,8 @@ border: 1px solid #ddd;
 
 /* Títulos de las secciones centrados */
 #cuentaCorriente h3, #historialCliente h3 {
-text-align: center;
+text-align: left; /* Alinear el título a la izquierda */
+color: #0066cc; /* Cambiar el color del título a un celeste apenas más claro */
 }
 
 /* Asegurar consistencia en la visualización */
@@ -124,4 +132,173 @@ text-align: center;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 padding: 20px;
 margin-bottom: 20px;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    position: relative;
+    overflow-y: auto;
+    max-height: 50%;
+}
+
+.popup-header {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.popup-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #c9302c;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tablink {
+    background-color: #e3e8ec;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.tablink:hover {
+    background-color: #ffffff;
+}
+
+.tablink.active {
+    background-color: #ffffff;
+}
+
+.tabcontent {
+    display: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.tabcontent p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.tabcontent input, .tabcontent select {
+    width: 60%;
+    padding: 5px;
+}
+
+.tabcontent h3 {
+    margin-top: 0;
+}
+
+.cliente-info-display {
+    font-size: 30px; /* Reducir el tamaño de la fuente en dos puntos */
+    margin-left: 10px;
+}
+
+.advertencia {
+    background-color: #ffdddd;
+    color: #d9534f;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #d9534f;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: left; /* Alinear el texto a la izquierda */
+    width: auto; /* Ajustar el cuadro al contenido */
+}
+
+#cargaReclamos .grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#cargaReclamos select {
+    width: 32%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.observaciones-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#observaciones {
+    width: 66%; /* Ajustar el ancho del cuadro de observaciones al tamaño de dos listados */
+    margin-left: 0; /* Alinear a la izquierda */
+    float: left; /* Alinear a la izquierda */
+}
+
+.cargando {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.cargando-contenido {
+    text-align: center;
+    color: #fff;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 6s linear infinite; /* Cambiar la duración de 500ms a 6s */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

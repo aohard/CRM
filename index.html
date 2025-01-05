@@ -35,11 +35,7 @@
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Nro. de Cliente">
             <button onclick="buscarCliente()">Buscar (F8)</button>
-        </div>
-
-        <!-- Mensaje de Advertencia -->
-        <div id="mensajeAdvertencia" class="advertencia" style="display: none;">
-            <p>IMPORTANTE: el nuevo decodificador 4K - Android TV no es posible brindarlo como recambio o venta de boca nueva. Solo el área de Retención puede ofrecer la oferta.</p>
+            <span id="clienteInfoDisplay" class="cliente-info-display"></span> <!-- Nuevo elemento para mostrar el número y nombre del cliente -->
         </div>
 
         <div class="grid">
@@ -68,7 +64,15 @@
                 <p><strong>Comercial:</strong> <span id="comercial"></span></p>
                 <p><strong>Ubicación:</strong> <span id="ubicacion"></span></p>
             </div>
+        </div>
 
+        <!-- Mensaje de Advertencia -->
+        <div id="mensajeAdvertencia" class="advertencia" style="display: none;">
+            <p>IMPORTANTE: el nuevo decodificador 4K - Android TV no es posible brindarlo como recambio o venta de boca nueva. Solo el área de Retención puede ofrecer la oferta.</p>
+        </div>
+        
+
+        <div class="grid">
             <div class="card" id="estadoCliente">
                 <h3>Estado del Cliente</h3>
                 <p><strong>Estado:</strong> <span id="estado"></span></p>
@@ -101,13 +105,12 @@
                 <p><strong>Dispositivos Asociados:</strong> <i class="fas fa-wifi"></i></p>
             </div>
         </div>
-    </div>
 
-  <!-- Sección con Cuenta Corriente e Historial uno al lado del otro -->
-  <div class="grid">
+  <!-- Sección con Cuenta Corriente e Historial en la misma fila -->
+  <div class="grid full-width">
     <!-- Cuenta Corriente -->
-    <div class="card" id="cuentaCorriente">
-        <h3>Cuenta Corriente</h3>
+    <div class="card" id="cuentaCorriente" style="display: none;">
+        <h3 id="cuentaCorrienteTitulo">Cuenta Corriente</h3>
         <table>
             <thead>
                 <tr>
@@ -128,7 +131,7 @@
     </div>
 
     <!-- Historial -->
-    <div class="card" id="historialCliente">
+    <div class="card" id="historialCliente" style="display: none;">
         <h3>Historial</h3>
         <table>
             <thead>
@@ -148,18 +151,90 @@
 </div>
 
 <!-- Carga de Reclamos al final -->
-<div class="card" id="cargaReclamos">
+<div class="card" id="cargaReclamos" style="display: none;">
     <h3>Cargar Sugerencia / Reclamo</h3>
-    <select id="selectReclamo">
-        <option value="">- Seleccionar -</option>
-        <option value="reclamo1">Reclamo 1</option>
-        <option value="reclamo2">Reclamo 2</option>
-        <!-- Agrega más opciones según sea necesario -->
-    </select>
-    <button onclick="cargarReclamo()">Cargar</button>
+    <div class="grid">
+        <select id="selectReclamo1">
+            <option value="">- Seleccionar -</option>
+            <option value="reclamo1">Reclamo 1</option>
+            <option value="reclamo2">Reclamo 2</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
+        <select id="selectReclamo2">
+            <option value="">- Seleccionar -</option>
+            <option value="reclamo1">Reclamo 1</option>
+            <option value="reclamo2">Reclamo 2</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
+        <select id="selectReclamo3">
+            <option value="">- Seleccionar -</option>
+            <option value="reclamo1">Reclamo 1</option>
+            <option value="reclamo2">Reclamo 2</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
+    </div>
+    <div class="observaciones-container">
+        <textarea id="observaciones" placeholder="Ingrese sus observaciones aquí..." rows="4"></textarea>
+        <button onclick="cargarReclamo()">Cargar</button>
+    </div>
 </div>
-</div>
-    <div class="footer">Telecentro S.A. - 2024</div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <button class="close-btn" onclick="cerrarPopup()">✖</button>
+            <div class="popup-header">
+                <h2>Búsqueda</h2>
+            </div>
+            <div class="tabs">
+                <button class="tablink active" onclick="openTab(event, 'Cliente')">Cliente</button>
+                <button class="tablink" onclick="openTab(event, 'Direccion')">Dirección</button>
+                <button class="tablink" onclick="openTab(event, 'Telefono')">Teléfono</button>
+                <button class="tablink" onclick="openTab(event, 'Gestion')">Gestión</button>
+            </div>
+            <div id="Cliente" class="tabcontent active">
+                <h3>Cliente</h3>
+                <p><strong>Apellido:</strong> <input type="text" id="apellido"></p>
+                <p><strong>Nombre:</strong> <input type="text" id="nombre"></p>
+                <p><strong>DNI:</strong> <input type="text" id="dniPopup"></p>
+                <p><strong>CUIT:</strong> <input type="text" id="cuit"></p>
+                <button onclick="buscarPorCliente()">Buscar</button>
+            </div>
+            <div id="Direccion" class="tabcontent">
+                <h3>Dirección</h3>
+                <p><strong>Calle:</strong> <input type="text" id="calle"></p>
+                <p><strong>Número:</strong> <input type="text" id="numero"></p>
+                <button onclick="buscarPorDireccion()">Buscar</button>
+            </div>
+            <div id="Telefono" class="tabcontent">
+                <h3>Teléfono</h3>
+                <p><strong>Número de Teléfono:</strong> <input type="text" id="telefonoPopup"></p>
+                <button onclick="buscarPorTelefono()">Buscar</button>
+            </div>
+            <div id="Gestion" class="tabcontent">
+                <h3>Gestión</h3>
+                <p><strong>Tipo de Gestión:</strong>
+                    <select id="tipoGestion">
+                        <option value="solicitudTecnica">Solicitud Técnica</option>
+                        <option value="sugerencia">Sugerencia</option>
+                        <option value="reclamoAdministrativo">Reclamo Administrativo</option>
+                        <option value="visitaTecnica">Visita Técnica</option>
+                    </select>
+                </p>
+                <p><strong>Número:</strong> <input type="text" id="numeroGestion"></p>
+                <button onclick="buscarPorGestion()">Buscar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Círculo de carga -->
+    <div id="cargando" class="cargando" style="display: none;">
+        <div class="cargando-contenido">
+            <div class="spinner"></div>
+            <p>Cargando...</p>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
