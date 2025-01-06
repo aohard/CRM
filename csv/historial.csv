@@ -1,0 +1,13 @@
+NumeroCliente,Fecha,Nro,Historia,Tipo,Estado
+1001,15/02/2024,987654321,Visita Técnica,Visita Técnica,Incumplida
+1001,20/03/2024,123456789,Visita Técnica,Visita Técnica,Cumplida
+1002,10/01/2024,234567890,Visita Técnica,Visita Técnica,Pendiente
+1003,05/03/2024,456789012,Visita Técnica,Visita Técnica,Cumplida
+1003,10/04/2024,567890123,Visita Técnica,Visita Técnica,Incumplida
+1004,15/05/2024,678901234,Visita Técnica,Visita Técnica,Pendiente
+1005,25/07/2024,890123456,Visita Técnica,Visita Técnica,Cumplida
+1005,30/08/2024,901234567,Visita Técnica,Visita Técnica,Cumplida
+1001,01/09/2024,112233445,Sugerencia,Consulta Nota de Débito,Cerrada
+1002,05/09/2024,223344556,RA,RA,
+1003,10/09/2024,334455667,Sugerencia,App-Validación-Modificar Domicilio,Pendiente
+1004,15/09/2024,445566778,RA,RA,En Proceso

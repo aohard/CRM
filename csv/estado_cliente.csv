@@ -1,0 +1,6 @@
+NumeroCliente,Estado,Categoria,TipoFactura,FormaDePago,ClaveDePago,CondicionIIBB,CondicionIVA
+1001,Habilitado,Cliente Oro,Factura A,Efectivo,12345,Exento,Consumidor Final
+1002,Cancelado,Cliente Plata,Factura B,Transferencia,67890,No Exento,Monotributista
+1003,Habilitado,Cliente Bronce,Factura C,Débito,11223,Exento,Responsable Inscripto
+1004,Cancelado,Cliente Básico,Factura B,Crédito,33445,No Exento,Exento
+1005,Habilitado,Cliente Premium,Factura A,Efectivo,55667,Exento,Responsable Inscripto

@@ -1,0 +1,6 @@
+NumeroCliente,Telefono,Email,SucVirtual,Notificaciones
+1001,555-1234,juan.perez@example.com,Sucursal A,Sin notificaciones
+1002,555-5678,ana.garcia@example.com,Sucursal B,Sin notificaciones
+1003,555-9101,carlos.lopez@example.com,Sucursal C,Sin notificaciones
+1004,555-1213,maria.fernandez@example.com,Sucursal D,Sin notificaciones
+1005,555-1415,luis.gonzalez@example.com,Sucursal E,Sin notificaciones

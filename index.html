@@ -54,7 +54,6 @@
                 <p><strong>Email:</strong> <span id="email"></span></p>
                 <p><strong>Suc. Virtual:</strong> <span id="sucVirtual"></span></p>
                 <p><strong>Notificaciones Enviadas:</strong> <span id="notificaciones"></span></p>
-                <p><strong>Cuenta de RRSS:</strong> <span id="cuentaRRSS"></span></p>
             </div>
 
             <div class="card" id="zonaInfo">
@@ -154,29 +153,23 @@
 <div class="card" id="cargaReclamos" style="display: none;">
     <h3>Cargar Sugerencia / Reclamo</h3>
     <div class="grid">
-        <select id="selectReclamo1">
+        <select id="selectReclamo1" onchange="cargarOpciones()">
             <option value="">- Seleccionar -</option>
-            <option value="reclamo1">Reclamo 1</option>
-            <option value="reclamo2">Reclamo 2</option>
-            <!-- Agrega más opciones según sea necesario -->
+            <option value="Sugerencia">Sugerencia</option>
+            <option value="RA">RA</option>
         </select>
         <select id="selectReclamo2">
             <option value="">- Seleccionar -</option>
-            <option value="reclamo1">Reclamo 1</option>
-            <option value="reclamo2">Reclamo 2</option>
-            <!-- Agrega más opciones según sea necesario -->
         </select>
         <select id="selectReclamo3">
             <option value="">- Seleccionar -</option>
-            <option value="reclamo1">Reclamo 1</option>
-            <option value="reclamo2">Reclamo 2</option>
-            <!-- Agrega más opciones según sea necesario -->
         </select>
     </div>
     <div class="observaciones-container">
         <textarea id="observaciones" placeholder="Ingrese sus observaciones aquí..." rows="4"></textarea>
         <button onclick="cargarReclamo()">Cargar</button>
     </div>
+</div>
 </div>
 
     <!-- Popup -->

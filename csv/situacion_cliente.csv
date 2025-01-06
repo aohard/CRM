@@ -1,0 +1,6 @@
+NumeroCliente,RecAdm,VisitasTecnicas,Instalaciones,Bajas,Deuda,Bloqueos,PropensionBaja,ReclamoFormal
+1001,1,1,1,1,1,1,1,1
+1002,Si,0,2,1,Si,No,Si,Si
+1003,No,1,0,2,Si,Si,No,No
+1004,No,3,1,0,No,Si,No,Si
+1005,Si,2,3,1,Si,No,Si,No
